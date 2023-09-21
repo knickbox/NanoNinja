@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     car.control_car(100, 100)
 
-    time.sleep(4)
+    time.sleep(2)
 
     car.control_car(0, 0)
 
