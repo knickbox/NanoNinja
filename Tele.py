@@ -1,20 +1,20 @@
 from pynput import keyboard
-from Car import car
+from Car import Car
+
+car = Car()
 
 def on_press(key):
-        if key.char == 'w':
-            car.control_car(100, 100)
-        elif key.char == 's':
-            car.control_car(-100, -100)
-        elif key.char == 'a':
-            car.control_car(-100,100)
-        elif key.char == 'd':
-            car.control_car(100,-100)
+    if key.char == 'w':
+        car.control_car(100, 100)
+    elif key.char == 's':
+        car.control_car(-100, -100)
+    elif key.char == 'a':
+        car.control_car(-100,100)
+    elif key.char == 'd':
+        car.control_car(100,-100)
 
 
 def on_release(key):
-    # print('{0} released'.format(
-    #     key))
     if key == keyboard.Key.esc:
         # Stop listener
         return False
