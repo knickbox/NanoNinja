@@ -2,7 +2,6 @@ from pynput import keyboard
 from Car import car
 
 def on_press(key):
-    try:
         if key.char == 'w':
             car.control_car(100, 100)
         elif key.char == 's':
@@ -11,10 +10,6 @@ def on_press(key):
             car.control_car(-100,100)
         elif key.char == 'd':
             car.control_car(100,-100)
-
-    except AttributeError:
-        print('special key {0} pressed'.format(
-            key))
 
 
 def on_release(key):
