@@ -1,4 +1,6 @@
 import curses
+from Car import Car
+car = Car()
 screen = curses.initscr()
 curses.noecho()
 curses.cbreak() # don't have to press enter
@@ -11,6 +13,7 @@ try:
             break
         elif char == curses.KEY_UP:
             print("up")
+            car.control_car(100,100)
         elif char == curses.KEY_DOWN:
             print("down")
         elif char == curses.KEY_RIGHT:
