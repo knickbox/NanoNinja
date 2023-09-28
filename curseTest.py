@@ -1,8 +1,8 @@
 import curses
-curses.initscr()
+screen = curses.initscr()
 curses.noecho()
 curses.cbreak() # don't have to press enter
-stdscr.keypad(True)
+screen.keypad(True)
 
 try:
     while True:
