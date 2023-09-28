@@ -1,6 +1,7 @@
 from keyboard_listener import KeyboardListener, Combo, KeyWord
+from Car import Car
 import sys
-
+car = Car()
 def moveForward():
 	car.control_car(100,100)
 
