@@ -16,13 +16,16 @@ try:
             car.control_car(100,100)
         elif char == curses.KEY_DOWN:
             print("down")
-            car.control_car(0,0)
+            car.control_car(-100,-100)
         elif char == curses.KEY_RIGHT:
             print("right")
+            car.control_car(100,-100)
         elif char == curses.KEY_LEFT:
             print("left")
-        elif char == 10:
+            car.control_car(-100,100)
+        elif char == 'm':
             print("stop")
+            car.control_car(0,0)
 finally:
     curse.nocbreak()
     screen.keypad(0)
