@@ -23,7 +23,7 @@ try:
         elif char == curses.KEY_LEFT:
             print("left")
             car.control_car(-100,100)
-        elif char == 'm':
+        elif char == ord('m'):
             print("stop")
             car.control_car(0,0)
 finally:
