@@ -16,6 +16,7 @@ try:
             car.control_car(100,100)
         elif char == curses.KEY_DOWN:
             print("down")
+            car.control_car(0,0)
         elif char == curses.KEY_RIGHT:
             print("right")
         elif char == curses.KEY_LEFT:
