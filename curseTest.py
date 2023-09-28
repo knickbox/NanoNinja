@@ -7,7 +7,7 @@ stdscr.keypad(True)
 try:
     while True:
         char = screen.getch()
-        if char == ord('q')
+        if char == ord('q'):
             break
         elif char == curses.KEY_UP:
             print "up"
