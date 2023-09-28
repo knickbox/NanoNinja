@@ -30,7 +30,7 @@ keywords = {
 	'keyword_2': KeyWord('s', moveBackward),
 	'left': KeyWord('a', moveLeft),
 	'right': KeyWord('d', moveRight),
-	'exitWord': KeyWord('q', exitMode)
+	'exitWord': KeyWord('q', exitMode),
 	'stop': KeyWord(' ', stop)
 }
 
