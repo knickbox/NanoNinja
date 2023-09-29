@@ -2,7 +2,7 @@
 
 ## Basic Mobility
 
-NanoNinja uses a Python class called `Car`, which was provided by our TA, to interface with its hardware. Currently, it has two main components: `DeadRec.py` and `teleoperation.py`. With these components, you can make NanoNinja move in a square pattern or control it remotely using your keyboard.
+NanoNinja uses a Python class called `Car`, which was provided by our TA, to interface with its hardware. Currently, it has two main components: `DeadRec.py` and `teleoperation.py` which are bot located in the **BasicMobility**. With these components, you can make NanoNinja move in a square pattern or control it remotely using your keyboard.
 
 ## Dependencies
 
