@@ -1,5 +1,9 @@
 # NanoNinja
 
+## Visual Odometry
+
+While trying to implement visual odometry on our robot we ran into several issues. We attempted to install ROS on the raspberry pi using the built in OS. When we were unable to get that to work we decided to try and flash Ubuntu onto it and install ROS that way, including following the instruction videos that were posted on the discord. After this it also took a few days to figure out how to install ORB-SLAM on the computer. Even after that we could never get the robot and ORB-SLAM to communicate. We began trying to just record video from the robot to at least have some sort of data to try and process. At this point we switched who had the robot and encountered the problem that the raspberry pi wouldn't connect to a monitor via HDMI. Without access to the wifi the robot had been connected to before or able to access via HDMI we ran out of time to figure out a solution in time to complete the assignment.
+
 ## Basic Mobility
 
 NanoNinja uses a Python class called `Car`, which was provided by our TA, to interface with its hardware. Currently, it has two main components: `DeadRec.py` and `teleoperation.py` which are both located in the **BasicMobility** folder. With these components, you can make NanoNinja move in a square pattern or control it remotely using your keyboard.
