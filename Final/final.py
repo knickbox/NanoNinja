@@ -5,4 +5,4 @@ car = Car()
 
 speed = 50
 
-print(distance())
+print(car.distance())

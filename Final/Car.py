@@ -4,20 +4,20 @@ import time
 import math
 import RPi.GPIO as GPIO
 
-# GPIO for Sonar
-GPIO.setwarnings(False)
-
-EchoPin = 18
-TrigPin = 16
-GPIO.setmode(GPIO.BOARD)
-
-GPIO.setup(EchoPin, GPIO.IN)
-GPIO.setup(TrigPin, GPIO.OUT)
-
 class Car:
     def __init__(self):
         self._addr = 0x16
         self._device = smbus.SMBus(1)
+
+        # GPIO for Sonar
+        GPIO.setwarnings(False)
+
+        EchoPin = 18
+        TrigPin = 16
+        GPIO.setmode(GPIO.BOARD)
+
+        GPIO.setup(EchoPin, GPIO.IN)
+        GPIO.setup(TrigPin, GPIO.OUT)
 
     def __write_u8(self, register, data):
         try:
@@ -69,7 +69,7 @@ class Car:
         data = [servo_id, angle]
         self.__write_array(register, data)
 
-def distance():
+    def distance(self):
         GPIO.output(TrigPin, GPIO.LOW)
         time.sleep(0.000002)
         GPIO.output(TrigPin, GPIO.HIGH)
