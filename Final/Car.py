@@ -1,4 +1,4 @@
-# Modified to integrate distance method
+# Modified to integrate distance method, sing, and cleaup
 import smbus2 as smbus
 import time
 import math
