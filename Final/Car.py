@@ -69,7 +69,7 @@ class Car:
         data = [servo_id, angle]
         self.__write_array(register, data)
 
-    def distance():
+def distance():
         GPIO.output(TrigPin, GPIO.LOW)
         time.sleep(0.000002)
         GPIO.output(TrigPin, GPIO.HIGH)
