@@ -2,7 +2,7 @@ from Car import Car
 import time
 
 SPEED = 50
-
+DIST_TO_STEER = 50
 
 
 if __name__ == '__main__':
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     try:
         while True:
             dist = car.distance()
-            if dist < 20:
+            if dist < DIST_TO_STEER:
                 car.control_car(0, SPEED)
             else:
                 car.control_car(SPEED + 10, SPEED)
