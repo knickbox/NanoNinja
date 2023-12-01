@@ -95,9 +95,10 @@ class Car:
         return ((t2 - t1) * 340 / 2) * 100
     
     def sing(self):
+        # song is a list of tuples (frequency, duration)
         song = [
             (100,.4),
-            (100,.4)]
+            (120,.4)]
 
         Buzz = GPIO.PWM(self.BuzPin, 440)
         Buzz.start(50)
