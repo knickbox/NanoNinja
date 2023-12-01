@@ -11,5 +11,5 @@ if __name__ == '__main__':
     time.sleep(0.5)
     car.set_servo(1, 180)
     time.sleep(0.1)
-    car.set_servo(2, 95)
+    car.set_servo(2, 85)
     print(car.distance())
