@@ -4,20 +4,20 @@ import time
 import math
 import RPi.GPIO as GPIO
 
+# GPIO for Sonar
+GPIO.setwarnings(False)
+
+EchoPin = 18
+TrigPin = 16
+GPIO.setmode(GPIO.BOARD)
+
+GPIO.setup(EchoPin, GPIO.IN)
+GPIO.setup(TrigPin, GPIO.OUT)
+
 class Car:
     def __init__(self):
         self._addr = 0x16
         self._device = smbus.SMBus(1)
-
-        # GPIO for Sonar
-        GPIO.setwarnings(False)
-
-        EchoPin = 18
-        TrigPin = 16
-        GPIO.setmode(GPIO.BOARD)
-
-        GPIO.setup(EchoPin, GPIO.IN)
-        GPIO.setup(TrigPin, GPIO.OUT)
 
     def __write_u8(self, register, data):
         try:
