@@ -27,7 +27,7 @@ try:
             print("stop")
             car.control_car(0,0)
 finally:
-    curse.nocbreak()
+    curses.nocbreak()
     screen.keypad(0)
     curses.echo()
     curses.endwin()
