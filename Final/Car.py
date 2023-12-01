@@ -12,12 +12,12 @@ class Car:
         # GPIO for Sonar
         GPIO.setwarnings(False)
 
-        EchoPin = 18
-        TrigPin = 16
+        self.EchoPin = 18
+        self.TrigPin = 16
         GPIO.setmode(GPIO.BOARD)
 
-        GPIO.setup(EchoPin, GPIO.IN)
-        GPIO.setup(TrigPin, GPIO.OUT)
+        GPIO.setup(self.EchoPin, GPIO.IN)
+        GPIO.setup(self.TrigPin, GPIO.OUT)
 
     def __write_u8(self, register, data):
         try:
@@ -70,20 +70,20 @@ class Car:
         self.__write_array(register, data)
 
     def distance(self):
-        GPIO.output(TrigPin, GPIO.LOW)
+        GPIO.output(self.TrigPin, GPIO.LOW)
         time.sleep(0.000002)
-        GPIO.output(TrigPin, GPIO.HIGH)
+        GPIO.output(self.TrigPin, GPIO.HIGH)
         time.sleep(0.000015)
-        GPIO.output(TrigPin, GPIO.LOW)
+        GPIO.output(self.TrigPin, GPIO.LOW)
 
         t3 = time.time()
 
-        while not GPIO.input(EchoPin):
+        while not GPIO.input(self.EchoPin):
             t4 = time.time()
             if (t4 - t3) > 0.03:
                 return -1
         t1 = time.time()
-        while GPIO.input(EchoPin):
+        while GPIO.input(self.EchoPin):
             t5 = time.time()
             if (t5 - t1) > 0.03:
                 return -1
