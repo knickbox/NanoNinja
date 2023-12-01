@@ -9,6 +9,11 @@ curses.cbreak() # don't have to press enter
 screen.keypad(True)
 speed = 50
 
+
+GPIO.setwarnings(False)
+
+EchoPin = 18
+TrigPin = 16
 GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(EchoPin, GPIO.IN)
