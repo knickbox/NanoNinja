@@ -107,6 +107,9 @@ class Car:
             time.sleep(note[1])
         Buzz.stop()
 
+    def cleanup(self):
+        GPIO.cleanup()
+        
 # Example Main
 if __name__ == '__main__':
     car = Car()
