@@ -14,10 +14,12 @@ class Car:
 
         self.EchoPin = 18
         self.TrigPin = 16
+        self.BuzPin = 32
         GPIO.setmode(GPIO.BOARD)
 
         GPIO.setup(self.EchoPin, GPIO.IN)
         GPIO.setup(self.TrigPin, GPIO.OUT)
+        GPIO.setup(self.BuzPin, GPIO.OUT)
 
     def __write_u8(self, register, data):
         try:
@@ -91,7 +93,18 @@ class Car:
         t2 = time.time()
         time.sleep(0.01)
         return ((t2 - t1) * 340 / 2) * 100
+    
+    def sing(self):
+        song = [
+            (100,.4),
+            (100,.4)]
 
+        Buzz = GPIO.PWM(self.BuzPin, 440)
+        Buzz.start(50)
+        for note in song:
+            Buzz.ChangeFrequency(note[0])
+            time.sleep(note[1])
+        Buzz.stop()
 
 # Example Main
 if __name__ == '__main__':
