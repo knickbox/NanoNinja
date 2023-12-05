@@ -52,3 +52,6 @@ To remotely control NanoNinja using your keyboard, follow these steps:
 
 5. To stop NanoNinja, press 'm'.
 6. To quit the program, press 'q'.
+
+## Final
+- note: ran into segfault problems when both yolov5 and yolov8 on raspberry pi.  Problem was fixed py downgrading pytorch ```pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2```
