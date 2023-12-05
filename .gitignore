@@ -238,3 +238,6 @@ fabric.properties
 
 # Mac
 .DS_Store
+
+# yolo
+*.pt
