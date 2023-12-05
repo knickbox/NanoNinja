@@ -8,7 +8,10 @@ class Detector:
 
     def detect(self):
         result, image = self.cam.read()
-        if result:
+        image = cv2.imread('../../test.jpg')
+        if True:
+            image = cv2.resize(image, (320, 320))
             return self.model(image)  # predict on an image
         else:
             return None
+        
