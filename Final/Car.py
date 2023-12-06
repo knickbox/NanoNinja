@@ -94,13 +94,45 @@ class Car:
         time.sleep(0.01)
         return ((t2 - t1) * 340 / 2) * 100
     
+
+    def note_to_frequency(note):
+        # Dictionary to map note names to the number of half steps away from A4
+        note_to_steps = {'C': -9, 'C#': -8, 'Db': -8, 'D': -7, 'D#': -6, 'Eb': -6,
+                        'E': -5, 'Fb': -5, 'E#': -4, 'F': -4, 'F#': -3, 'Gb': -3,
+                        'G': -2, 'G#': -1, 'Ab': -1, 'A': 0, 'A#': 1, 'Bb': 1,
+                        'B': 2, 'Cb': 2, 'B#': 3}
+
+        # Check if the note is in the dictionary
+        if note in note_to_steps:
+            # Calculate the number of half steps away from A4
+            steps_away = note_to_steps[note]
+            
+            # Calculate the frequency using the formula
+            frequency = 2 ** (steps_away / 12) * 440
+            
+            return frequency
+        else:
+            return None  # Return None for invalid notes
+        
+
     def sing(self):
-        # song is a list of tuples (frequency, duration)
+        # song is a list of tuples (note, duration)
         song = [
-            (185,.4),
-            (277.18,.4),
-            (369.99,.4),
-            (415.30,.4)]
+            ('F#',.17),
+            ('C#',.17),
+            ('F#',.17),
+            ('G#',.17),
+            ('C#',.17),
+            ('F#',.17),
+            ('G#',.17),
+            ('B' ,.17),
+            ('C#',.17),
+            ('B' ,.17),
+            ('Bb',.17),
+            ('C#',.17),
+            ('Bb',.17),
+            ('G#',.17),
+            ('F#',.17)]
 
         Buzz = GPIO.PWM(self.BuzPin, 440)
         Buzz.start(50)
