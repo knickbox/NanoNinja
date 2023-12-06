@@ -28,6 +28,7 @@ if __name__ == '__main__':
         turningSharp = False
         while True:
             dist = car.distance()
+            print(dist)
             if turningSharp:
                 if dist > FAR_THRESH:
                     turningSharp = False
