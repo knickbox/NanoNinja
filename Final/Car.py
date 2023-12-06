@@ -95,7 +95,7 @@ class Car:
         return ((t2 - t1) * 340 / 2) * 100
     
 
-    def note_to_frequency(note):
+    def note_to_frequency(self, note):
         # Dictionary to map note names to the number of half steps away from A4
         note_to_steps = {'C': -9, 'C#': -8, 'Db': -8, 'D': -7, 'D#': -6, 'Eb': -6,
                         'E': -5, 'Fb': -5, 'E#': -4, 'F': -4, 'F#': -3, 'Gb': -3,
@@ -137,7 +137,7 @@ class Car:
         Buzz = GPIO.PWM(self.BuzPin, 440)
         Buzz.start(50)
         for note in song:
-            Buzz.ChangeFrequency(note[0])
+            Buzz.ChangeFrequency(self.note_to_frequency(note[0]))
             time.sleep(note[1])
         Buzz.stop()
 
