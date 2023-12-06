@@ -108,7 +108,7 @@ class Car:
             steps_away = note_to_steps[note]
             
             # Calculate the frequency using the formula
-            frequency = 2 ** (steps_away / 12) * 440
+            frequency = 2 ** ((steps_away + 12) / 12) * 440
             
             return frequency
         else:
