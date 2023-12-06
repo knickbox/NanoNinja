@@ -41,7 +41,7 @@ if __name__ == '__main__':
                     turn_left()
                 else:
                     slight_right()
-                time.sleep(FREQ)
+            time.sleep(FREQ)
     except KeyboardInterrupt:
         car.control_car(0, 0)
         # car.set_servo(1, 90)
