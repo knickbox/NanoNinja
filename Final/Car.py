@@ -97,8 +97,10 @@ class Car:
     def sing(self):
         # song is a list of tuples (frequency, duration)
         song = [
-            (100,.4),
-            (120,.4)]
+            (185,.4),
+            (277.18,.4),
+            (369.99,.4),
+            (415.30,.4)]
 
         Buzz = GPIO.PWM(self.BuzPin, 440)
         Buzz.start(50)

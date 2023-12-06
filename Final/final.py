@@ -21,29 +21,30 @@ if __name__ == '__main__':
 
     def slight_right():
         car.control_car(SPEED + 10, SPEED)
-    # Main control loop
 
-
-    try:
-        turningSharp = False
-        while True:
-            dist = car.distance()
-            print(dist)
-            if turningSharp:
-                if dist > FAR_THRESH:
-                    turningSharp = False
-                    slight_right()
-                else:
-                    turn_left()
+# TODO: Use the last value to reduce false reads
+# TODO: Make a rescue code to unstick the car
+# Main control loop
+try:
+    turningSharp = False
+    while True:
+        dist = car.distance()
+        print(dist)
+        if turningSharp:
+            if dist > FAR_THRESH:
+                turningSharp = False
+                slight_right()
             else:
-                if dist < CLOSE_THRESH:
-                    turningSharp = True
-                    turn_left()
-                else:
-                    slight_right()
-            time.sleep(FREQ)
-    except KeyboardInterrupt:
-        car.control_car(0, 0)
-        # car.set_servo(1, 90)
-        # car.set_servo(2, 90)
-        car.cleanup()
+                turn_left()
+        else:
+            if dist < CLOSE_THRESH:
+                turningSharp = True
+                turn_left()
+            else:
+                slight_right()
+        time.sleep(FREQ)
+except KeyboardInterrupt:
+    car.control_car(0, 0)
+    # car.set_servo(1, 90)
+    # car.set_servo(2, 90)
+    car.cleanup()
