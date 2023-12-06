@@ -97,7 +97,7 @@ class Car:
 
     def note_to_frequency(self, note):
         # Dictionary to map note names to the number of half steps away from A4
-        note_to_steps = {'C': -9, 'C#': -8, 'Db': -8, 'D': -7, 'D#': -6, 'Eb': -6,
+        note_to_steps = {'F#0': -15, 'C': -9, 'C#': -8, 'Db': -8, 'D': -7, 'D#': -6, 'Eb': -6,
                         'E': -5, 'Fb': -5, 'E#': -4, 'F': -4, 'F#': -3, 'Gb': -3,
                         'G': -2, 'G#': -1, 'Ab': -1, 'A': 0, 'A#': 1, 'Bb': 1,
                         'B': 2, 'Cb': 2, 'B#': 3}
@@ -118,7 +118,7 @@ class Car:
     def sing(self):
         # song is a list of tuples (note, duration)
         song = [
-            ('F#',.17),
+            ('F#0',.17),
             ('C#',.17),
             ('F#',.17),
             ('G#',.17),
