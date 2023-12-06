@@ -3,7 +3,7 @@ import time
 
 SPEED = 70
 CLOSE_THRESH = 40
-FAR_THRESH = 150
+FAR_THRESH = 100
 FREQ = 0.3
 
 if __name__ == '__main__':
