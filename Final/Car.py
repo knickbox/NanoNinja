@@ -115,9 +115,9 @@ class Car:
             return None  # Return None for invalid notes
         
 
-    def sing(self):
+    def sing(self, songId=0):
         # song is a list of tuples (note, duration)
-        song = [
+        moonTheme = [
             ('F#0',.17),
             ('C#',.17),
             ('F#',.17),
@@ -133,7 +133,15 @@ class Car:
             ('Bb',.17),
             ('G#',.17),
             ('F#',.17)]
+        
+        rescueBeep = [
+            ('F#0',.17),
+            ('F#0',.17)
+        ]
+        
+        songs = [moonTheme, rescueBeep]
 
+        song = songs[songId]
         Buzz = GPIO.PWM(self.BuzPin, 440)
         Buzz.start(50)
         for note in song:
@@ -143,6 +151,13 @@ class Car:
 
     def cleanup(self):
         GPIO.cleanup()
+
+    def rescue(self):
+        self.control_car(0, 0)
+        self.sing(1)
+        self.control_car(-200, 225)
+        time.sleep(.5)
+        self.control_car(0, 0)
         
 # Example Main
 if __name__ == '__main__':
