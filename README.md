@@ -54,4 +54,9 @@ To remotely control NanoNinja using your keyboard, follow these steps:
 6. To quit the program, press 'q'.
 
 ## Final
-- note: ran into segfault problems when both yolov5 and yolov8 on raspberry pi.  Problem was fixed py downgrading pytorch ```pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2```
+
+Notes
+- ran into segfault problems when both yolov5 and yolov8 on raspberry pi.  Problem was fixed by downgrading pytorch ```pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2```
+- The movement works by veering slightly right when the distance read is over the threshold and turning left hard when dist is under the threshold (See image below)
+![movement Diagram](./media/basicMovement.png)
+- UPDATE: Movement now uses a mean of the last to values read to smooth out bad reads.
