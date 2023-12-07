@@ -4,7 +4,7 @@ import time
 SPEED = 70
 CLOSE_THRESH = 40
 FAR_THRESH = 100
-FREQ = 0.3
+FREQ = 0.3 # length of sleep each loop
 
 if __name__ == '__main__':
     car = Car()
@@ -22,22 +22,22 @@ if __name__ == '__main__':
     def slight_right():
         car.control_car(SPEED + 10, SPEED)
 
-# TODO: Use the last value to reduce false reads
-# TODO: Make a rescue code to unstick the car
-# Main control loop
+
 try:
+    lastRead = car.distance()
     turningSharp = False
     while True:
         dist = car.distance()
-        print(dist)
+        meanDist = (dist + lastRead) / 2 # smooth out the readings using the mean fo the last two
+        print(meanDist)
         if turningSharp:
-            if dist > FAR_THRESH:
+            if meanDist > FAR_THRESH:
                 turningSharp = False
                 slight_right()
             else:
                 turn_left()
         else:
-            if dist < CLOSE_THRESH:
+            if meanDist < CLOSE_THRESH:
                 turningSharp = True
                 turn_left()
             else:
