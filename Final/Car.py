@@ -97,7 +97,7 @@ class Car:
 
     def note_to_frequency(self, note):
         # Dictionary to map note names to the number of half steps away from A4
-        note_to_steps = {'F#0': -27, 'C': -9, 'C#': -8, 'Db': -8, 'D': -7, 'D#': -6, 'Eb': -6,
+        note_to_steps = {'F#0': -15, 'C': -9, 'C#': -8, 'Db': -8, 'D': -7, 'D#': -6, 'Eb': -6,
                         'E': -5, 'Fb': -5, 'E#': -4, 'F': -4, 'F#': -3, 'Gb': -3,
                         'G': -2, 'G#': -1, 'Ab': -1, 'A': 0, 'A#': 1, 'Bb': 1,
                         'B': 2, 'Cb': 2, 'B#': 3}
@@ -107,8 +107,8 @@ class Car:
             # Calculate the number of half steps away from A4
             steps_away = note_to_steps[note]
             
-            # Calculate the frequency using the formula the + 24 adds two octaves
-            frequency = 2 ** ((steps_away + 24) / 12) * 440
+            # Calculate the frequency using the formula the + 12 adds one octave
+            frequency = (2 ** ((steps_away + 12) / 12)) * 880.00
             
             return frequency
         else:
