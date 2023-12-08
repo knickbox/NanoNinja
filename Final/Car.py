@@ -107,8 +107,8 @@ class Car:
             # Calculate the number of half steps away from A4
             steps_away = note_to_steps[note]
             
-            # Calculate the frequency using the formula
-            frequency = 2 ** ((steps_away + 12) / 12) * 440
+            # Calculate the frequency using the formula the + 24 adds two octaves
+            frequency = 2 ** ((steps_away + 24) / 12) * 440
             
             return frequency
         else:
