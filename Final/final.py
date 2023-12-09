@@ -31,13 +31,13 @@ try:
         testDist = car.Distance_test()
         print(testDist)
         if turningSharp:
-            if testDist > FAR_THRESH and car.getRightSensor() == 0:
+            if testDist > FAR_THRESH and car.getRightSensor() == 1:
                 turningSharp = False
                 slight_right()
             else:
                 turn_left()
         else:
-            if testDist < CLOSE_THRESH or car.getRightSensor() == 1:
+            if testDist < CLOSE_THRESH or car.getRightSensor() == 0:
                 turningSharp = True
                 turn_left()
             else:
