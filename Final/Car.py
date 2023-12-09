@@ -104,6 +104,9 @@ class Car:
     
     def getLeftSensor(self):
         return GPIO.input(self.AvoidSensorLeft)
+    
+    def getRightSensor(self):
+        return GPIO.input(self.AvoidSensorRight)
 
     def note_to_frequency(self, note):
         # Dictionary to map note names to the number of half steps away from A4
