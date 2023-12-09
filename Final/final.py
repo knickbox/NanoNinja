@@ -15,7 +15,7 @@ if __name__ == '__main__':
     car.set_servo(2, 70)
     time.sleep(0.2)
 
-
+    # Use .25 of SPEED as modifier for turning
     def turn_left():
         car.control_car(-(SPEED//4), SPEED)
 
@@ -27,16 +27,17 @@ try:
     time.sleep(.1)
     turningSharp = False
     while True:
+        # Dist test takes multiple readings and returns a more robust distance
         testDist = car.Distance_test()
         print(testDist)
         if turningSharp:
-            if testDist > FAR_THRESH:
+            if testDist > FAR_THRESH and car.getRightSensor() == 0:
                 turningSharp = False
                 slight_right()
             else:
                 turn_left()
         else:
-            if testDist < CLOSE_THRESH:
+            if testDist < CLOSE_THRESH or car.getRightSensor() == 1:
                 turningSharp = True
                 turn_left()
             else:
