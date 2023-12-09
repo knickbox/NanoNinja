@@ -117,6 +117,10 @@ class Car:
 
     def sing(self, songId=0):
         # song is a list of tuples (note, duration)
+        startUp = [
+            ('F#0',.17),
+            ('F#',.17)]
+
         moonTheme = [
             ('F#0',.17),
             ('C#',.17),
@@ -140,7 +144,7 @@ class Car:
             ('F#0',.17)
         ]
         
-        songs = [moonTheme, rescueBeep]
+        songs = [startUp, moonTheme, rescueBeep]
 
         song = songs[songId]
         Buzz = GPIO.PWM(self.BuzPin, 440)

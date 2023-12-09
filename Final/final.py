@@ -12,7 +12,7 @@ if __name__ == '__main__':
     time.sleep(0.5)
     car.set_servo(1, 180)
     time.sleep(0.1)
-    car.set_servo(2, 85)
+    car.set_servo(2, 70)
     time.sleep(0.2)
 
 
@@ -25,6 +25,7 @@ if __name__ == '__main__':
 
 try:
     lastRead = car.distance()
+    time.sleep(.1)
     turningSharp = False
     while True:
         dist = car.distance()

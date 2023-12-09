@@ -4,7 +4,7 @@ from ultralytics import YOLO
 class Detector:
     def __init__(self):
         self.cam = cv2.VideoCapture(0)
-        self.cam.set(cv2.CAP_PROP_BUFFERSIZE, 0)
+        self.cam.set(cv2.CAP_PROP_BUFFERSIZE, 1)
         self.model = YOLO('yolov8n.pt')  # load an official model
 
     def detect(self):
