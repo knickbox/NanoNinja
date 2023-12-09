@@ -30,6 +30,7 @@ try:
     while True:
         dist = car.distance()
         meanDist = (dist + lastRead) / 2 # smooth out the readings using the mean fo the last two
+        lastRead = dist
         print(meanDist)
         if turningSharp:
             if meanDist > FAR_THRESH:
