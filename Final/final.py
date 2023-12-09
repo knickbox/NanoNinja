@@ -20,7 +20,7 @@ if __name__ == '__main__':
         car.control_car(-(SPEED//4), SPEED)
 
     def slight_right():
-        car.control_car(SPEED // 4, SPEED)
+        car.control_car(SPEED + (SPEED // 4), SPEED)
 
 
 try:
