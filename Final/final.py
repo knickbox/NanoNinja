@@ -17,20 +17,16 @@ if __name__ == '__main__':
 
 
     def turn_left():
-        car.control_car(-10, SPEED)
+        car.control_car(-(SPEED//4), SPEED)
 
     def slight_right():
-        car.control_car(SPEED + 10, SPEED)
+        car.control_car(SPEED // 4, SPEED)
 
 
 try:
-    # lastRead = car.distance()
     time.sleep(.1)
     turningSharp = False
     while True:
-        # dist = car.distance()
-        # meanDist = (dist + lastRead) / 2 # smooth out the readings using the mean fo the last two
-        # lastRead = dist
         testDist = car.Distance_test()
         print(testDist)
         if turningSharp:
@@ -48,6 +44,4 @@ try:
         time.sleep(FREQ)
 except KeyboardInterrupt:
     car.control_car(0, 0)
-    # car.set_servo(1, 90)
-    # car.set_servo(2, 90)
     car.cleanup()
