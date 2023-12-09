@@ -15,13 +15,13 @@ if __name__ == '__main__':
     car.set_servo(2, 60)
     time.sleep(0.2)
 
-    # Use .5 of SPEED as modifier for turning
+    # Use - of SPEED as modifier for turning
     def turn_left():
-        car.control_car(-(SPEED//2), SPEED)
+        car.control_car(-SPEED, SPEED)
 
-    # Use .25 of SPEED as modifier for turning
+    # Use .5 of SPEED as modifier for turning
     def slight_right():
-        car.control_car(SPEED + (SPEED // 4), SPEED)
+        car.control_car(SPEED + (SPEED // 2), SPEED)
 
 
 try:
