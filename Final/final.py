@@ -24,22 +24,23 @@ if __name__ == '__main__':
 
 
 try:
-    lastRead = car.distance()
+    # lastRead = car.distance()
     time.sleep(.1)
     turningSharp = False
     while True:
-        dist = car.distance()
-        meanDist = (dist + lastRead) / 2 # smooth out the readings using the mean fo the last two
-        lastRead = dist
-        print(meanDist)
+        # dist = car.distance()
+        # meanDist = (dist + lastRead) / 2 # smooth out the readings using the mean fo the last two
+        # lastRead = dist
+        testDist = car.Distance_test()
+        print(testDist)
         if turningSharp:
-            if meanDist > FAR_THRESH:
+            if testDist > FAR_THRESH:
                 turningSharp = False
                 slight_right()
             else:
                 turn_left()
         else:
-            if meanDist < CLOSE_THRESH:
+            if testDist < CLOSE_THRESH:
                 turningSharp = True
                 turn_left()
             else:

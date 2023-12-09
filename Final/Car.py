@@ -102,6 +102,21 @@ class Car:
         time.sleep(0.01)
         return ((t2 - t1) * 340 / 2) * 100
     
+    # Distance_test method from docs
+    def Distance_test(self):
+        num = 0
+        ultrasonic = 0
+        while num < 5:
+            distance = self.distance()
+            while int(distance) == -1:
+                distance = self.distance()
+            while int(distance) >= 500 or int(distance) == 0:
+                distance = self.distance()
+            ultrasonic.append(distance)
+            num += 1
+        distance = (ultrasonic[1] + ultrasonic[2] + ultrasonic[3]) / 3
+        return distance
+    
     def getLeftSensor(self):
         return GPIO.input(self.AvoidSensorLeft)
     
