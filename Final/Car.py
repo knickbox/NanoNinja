@@ -15,11 +15,19 @@ class Car:
         self.EchoPin = 18
         self.TrigPin = 16
         self.BuzPin = 32
+        self.AvoidSensorLeft = 21
+        self.AvoidSensorRight = 19
+        self.Avoid_ON = 22
         GPIO.setmode(GPIO.BOARD)
 
         GPIO.setup(self.EchoPin, GPIO.IN)
         GPIO.setup(self.TrigPin, GPIO.OUT)
         GPIO.setup(self.BuzPin, GPIO.OUT)
+        GPIO.setup(self.Avoid_ON, GPIO.OUT)
+        GPIO.setup(self.AvoidSensorLeft, GPIO.IN)
+        GPIO.setup(self.AvoidSensorRight, GPIO.IN)
+        GPIO.output(self.Avoid_ON, GPIO.HIGH)
+
 
     def __write_u8(self, register, data):
         try:
@@ -94,6 +102,8 @@ class Car:
         time.sleep(0.01)
         return ((t2 - t1) * 340 / 2) * 100
     
+    def getLeftSensor(self):
+        return GPIO.input(self.AvoidSensorLeft)
 
     def note_to_frequency(self, note):
         # Dictionary to map note names to the number of half steps away from A4
