@@ -105,7 +105,7 @@ class Car:
     # Distance_test method from docs
     def Distance_test(self):
         num = 0
-        ultrasonic = 0
+        ultrasonic = []
         while num < 5:
             distance = self.distance()
             while int(distance) == -1:
