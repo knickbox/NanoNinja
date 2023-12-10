@@ -1,7 +1,7 @@
 from Car import Car
 import time
 
-SPEED = 70
+SPEED = 80
 CLOSE_THRESH = 40
 FAR_THRESH = 100
 FREQ = 0.3 # length of sleep each loop
