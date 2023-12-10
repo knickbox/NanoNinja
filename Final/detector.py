@@ -7,9 +7,9 @@ class Detector:
         self.model = YOLO('yolov8n.pt')  # load an official model
 
     
-    def detect(self):
+    def detect(self, outputImage=False):
         """Takes an image and returns the number of people detected by the camera"""
-        
+
         result = False
         image = None
         # grab frames a bunch of times to clear the buffer (cv2 does not have a better way)
@@ -20,9 +20,9 @@ class Detector:
             image = cv2.resize(image, (320, 320)) # not super necessary but might save memory
             results = self.model(image, verbose=False) # predict on an image
             
-            ## uncomment to save the image with the bounding boxes
-            # annotated_frame = results[0].plot()
-            # cv2.imwrite('out.jpg',annotated_frame)
+            if outputImage:
+                annotated_frame = results[0].plot()
+                cv2.imwrite('out.jpg',annotated_frame)
 
             names = self.model.names
             # get the 'person' class id
