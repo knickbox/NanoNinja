@@ -29,7 +29,7 @@ if __name__ == '__main__':
 try:
     time.sleep(.1)
     turningSharp = False
-    timeAtLastDetection = time.time()
+    timeAtLastDetection = 0
     while True:
         if time.time() - timeAtLastDetection > DETECT_FREQ:
             car.control_car(0, 0)
