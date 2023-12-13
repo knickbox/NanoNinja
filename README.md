@@ -1,6 +1,6 @@
 # NanoNinja
 
-NanoNinja is a robot that navigates around the outside of a room using its sonar and IR avoidance sensors.  Every 5 seconds the robot will stop and take a picture facing the center of the room and then detect the number of people in the image.  The robot will report this count and then resume its movement.  We used YOLO version 8 to implement the person detection.  Besides the dependencies listed below all code is included in the *Final* directory.
+NanoNinja is a robot that navigates around the outside of a room using its sonar and IR avoidance sensors.  Every 5 seconds the robot will stop and take a picture facing the center of the room and then detect the number of people in the image.  The robot will report this count and then resume its movement.  We used YOLO version 8 to implement the person detection.  Besides the dependencies listed below all code is included in the *Final* directory.  We implemented our code on a Yahboom Raspot provided by class.  We also used a personal Raspberry Pi 4 running Ubuntu 22.
 
 Before you begin, make sure you have the following dependencies installed:
 
