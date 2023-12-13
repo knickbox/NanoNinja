@@ -53,7 +53,9 @@ To run the main loop:
 ### Notes
 - ran into segfault problems when both yolov5 and yolov8 on raspberry pi.  Problem was fixed by downgrading pytorch ```pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2```
 - The movement basically works by veering slightly right when the distance read is over the threshold and turning left hard when dist is under the threshold (See image below)
+
 ![movement Diagram](./media/basicMovement.png)
+
 - In order to get a current picture from the camera using cv2 it was necessary to "flush" the buffer. This was simply done by reading stored frames without loading them into memory.
 - Movement toggles between turning left and not turning left and uses two thresholds for cleaner movement.
 - Movement uses the right-side avoidance sensor to detect if it needs to turn.
