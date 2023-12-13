@@ -1,62 +1,60 @@
 # NanoNinja
 
-## Visual Odometry
-
-While trying to implement visual odometry on our robot we ran into several issues. We attempted to install ROS on the raspberry pi using the built in OS. When we were unable to get that to work we decided to try and flash Ubuntu onto it and install ROS that way, including following the instruction videos that were posted on the discord. After this it also took a few days to figure out how to install ORB-SLAM on the computer. Even after that we could never get the robot and ORB-SLAM to communicate. We began trying to just record video from the robot to at least have some sort of data to try and process. At this point we switched who had the robot and encountered the problem that the raspberry pi wouldn't connect to a monitor via HDMI. Without access to the wifi the robot had been connected to before or able to access via HDMI we ran out of time to figure out a solution in time to complete the assignment.
-
-## Basic Mobility
-
-NanoNinja uses a Python class called `Car`, which was provided by our TA, to interface with its hardware. Currently, it has two main components: `DeadRec.py` and `teleoperation.py` which are both located in the **BasicMobility** folder. With these components, you can make NanoNinja move in a square pattern or control it remotely using your keyboard.
-
-## Dependencies
+NanoNinja is a robot that 
 
 Before you begin, make sure you have the following dependencies installed:
 
 - **Time:** pythons built in time library.
+- **smbus2:** used to interact with the hardware
+- **cv2** used to interact with camera and manipulate images
+- **ultralytics** includes the YOLO algorithms
 
-- **Curses Library:** The `teleoperation.py` script uses the `curses` library to capture keyboard input for remote control.
 
 ## Usage
 
-### 1. Moving NanoNinja in a Square (DeadRec.py)
+### Running the main loop
 
-To make NanoNinja move in a square pattern, follow these steps:
+The main code for loop for the NanoNinja is all in */Final*.  You should enter this directory before running the main loop.  The main loop is located in *Final/final.py*. 
 
-1. Open a terminal.
-2. Navigate to the directory containing `DeadRec.py`.
-3. Run the following command:
+To run the main loop:
+
+1. Navigate to the */Final* directory:  
+   ```
+   cd Final
+   ```
+2. Run final.py using python3:
 
    ```
-   python DeadRec.py
+   python3 final.py
    ```
 
-4. NanoNinja will move in a square pattern.
+3. NanoNinja will move around the room counting the people in it.
+4. Use control + c to keyboard interrupt.  NanoNinja will exit cleanly after running some cleanup.
 
-### 2. Remote Control (teleoperation.py)
 
-To remotely control NanoNinja using your keyboard, follow these steps:
+## Additional Documentation
 
-1. Open a terminal.
-2. Navigate to the directory containing `teleoperation.py`.
-3. Run the following command:
+### Methods added to Car class
 
-   ```
-   python teleoperation.py
-   ```
+- distance: method was provided separately by the TA's and now is incorporated in the Car class
+- Distance_test: A more reliable distance read found in Yahboom's documentation that takes multiple reads and averages them.
+- sing: accesses the buzzer
+- cleanup: runs GPIO cleanup
+- rescue:  shakes the car loose if it gets stuck against the wall.  This is no longer necessary since the incorporation of the IR avoid sensors.
+- getLeftSensor and getRightSensor: returns a True or False value for if the sensor is triggered
+- Also note that the constructor was modified to add relevant GPIO pins.
 
-4. Use the arrow keys to control NanoNinja's movement:
-   - Up arrow: Move forward.
-   - Down arrow: Move backward.
-   - Left arrow: Turn left.
-   - Right arrow: Turn right.
+### Detector Class
 
-5. To stop NanoNinja, press 'm'.
-6. To quit the program, press 'q'.
+- detect method: returns the number of people visible to the camera. (takes about 1 - 2 seconds)
+- This is the part that uses **yolov8n**. See notes below if you have problems with yolo running out of memory.
 
-## Final
 
-Notes
+### Notes
 - ran into segfault problems when both yolov5 and yolov8 on raspberry pi.  Problem was fixed by downgrading pytorch ```pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2```
-- The movement works by veering slightly right when the distance read is over the threshold and turning left hard when dist is under the threshold (See image below)
+- The movement basically works by veering slightly right when the distance read is over the threshold and turning left hard when dist is under the threshold (See image below)
 ![movement Diagram](./media/basicMovement.png)
-- UPDATE: Movement now uses a mean of the last to values read to smooth out bad reads.
+- In order to get a current picture from the camera using cv2 it was necessary to "flush" the buffer. This was simply done by reading stored frames without loading them into memory.
+- Movement toggles between turning left and not turning left and uses two thresholds for cleaner movement.
+- Movement uses the right-side avoidance sensor to detect if it needs to turn.
+- Because the robot uses IR sensors you should not expect it to work as expected when exposed to sunlight.
